@@ -1,0 +1,223 @@
+<div class="workflow-g">
+  <div class="workflow-steps">
+    <div class="button-group" cdkDropList 
+         #stepsList="cdkDropList" 
+         [cdkDropListData]="stepst" 
+         [cdkDropListConnectedTo]="[createList]"
+
+        cdkDragDisabled>
+      <div class="steps-button" *ngFor="let step of stepst" cdkDrag [cdkDragData]="step">{{step}}</div>
+    </div>
+    
+  </div>
+
+  <div class="workflow-create" >
+    
+    <div cdkDropList 
+        #createList="cdkDropList" 
+        [cdkDropListData]="create"
+        [cdkDropListConnectedTo]="[stepsList]"
+        (cdkDropListDropped)="drop($event)" cdkDrag>
+
+          <table>
+              <tr *ngFor="let col of cols">
+                <td *ngFor="let colObj of col">
+                  <ng-container *ngIf="stepst">
+                   <div cdkDrag></div>
+                  </ng-container>
+                </td>
+              </tr>
+          </table>
+        </div>
+
+
+
+      
+
+      <div class="items-container">
+        
+        <div class="start-item">Start</div>
+        <app-branch branch_Type="step"></app-branch>
+
+        <div *ngFor="let item of create" cdkDrag [cdkDragData]="item" 
+          
+        (cdkDragEnded)="onDragEnded($event, item)" 
+        [ngStyle]="positions[item.id] ? {'transform': 'translate3d(' + (positions[item.id].x) + 'px, ' + (positions[item.id].y) + 'px, 0)'} : {}">
+
+        <div class="other-item" (click)="item.id ? ShowStepInfoClick(item.id) : ShowStepInfo()">
+          {{ item.name }}
+        </div>
+
+        <div *ngIf="testStep(item)" style="display: flex; flex-direction: column; align-items: center; height: 10px;">
+  
+          <div>
+            <app-branch branch_Type="step"></app-branch>
+
+          </div>
+          
+        </div>
+
+      
+        <div *ngIf="condiStep(item)" >
+            <div>
+              <app-branch branch_Type="Conditionelle"></app-branch>
+              <div style=" display: flex; justify-content: space-between;">
+                <div style="transform: translate(9.1px, -9px);">Yes</div>
+                <div style="transform: translate(-14.9px, -9px);">No</div>
+              </div>
+            </div>
+           
+        </div> 
+
+           <div *ngIf="iterStep(item)">
+            <div>
+              <app-branch branch_Type="Itération"></app-branch>
+            </div>
+            <div class="drag_Zone" cdkDropList [cdkDropListData]="iter" [cdkDropListConnectedTo]="[createList, stepsList]" (cdkDropListDropped)="drop($event)" style="margin-top: 25px; border: 1px solid #ccc; min-height: 100px;">
+              <div *ngFor="let item of item.child" cdkDrag [cdkDragData]="item" class="cdkDrag">
+                <div class="other-item" (click)="ShowStepInfoClick(item)">
+                  {{ item }}
+                </div>
+              </div>
+            </div>
+          </div> 
+
+        </div>
+        <div class="exit-item">Exit</div>
+      </div>
+    </div>
+      
+ 
+
+<div class="grid-box3"  *ngIf="showStepInfo" >
+
+  <div class="info"  >
+      <label for="description" style="margin: 4px 0px 10px;">Informations de la tâche</label><br>
+      <div style="display: flex;">
+          <div style="margin-right: 8px;">
+              <input type="text" id="name" name="name"  [(ngModel)]="AddStep.name" required placeholder="Nom de l'étape">
+          </div>
+
+          <div>
+              <input type="text" id="description" name="description" [(ngModel)]="AddStep.description" required placeholder="Description de l'étape">
+          </div>
+          <button class="iconStep" (click)="addStepsToWorkflow()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#303de7" class="bi bi-plus-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+            </svg>
+          </button>
+          <button class="iconStep" (click)="editStepOfWorkflow()" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffee00" class="bi bi-pencil-square" viewBox="0 0 16 16">
+              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+            </svg>
+          </button>
+           <button class="iconStep" (click)="deleteStep()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ff0000" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+              <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+            </svg>
+                       </button>
+
+      </div>
+      <div class="form-group" >
+        <label for="roles">Rôles</label>
+  
+        <div class="roles-container" >
+            <div class="role-checkbox" *ngFor="let role of roles">
+                <ng-container *ngIf="!role.status ">
+                  <input type="checkbox"
+                   name="roles"
+                   (change)="handleRoleChange($event, role)"
+                   [checked]="role.name === checkedRoles"
+                   >
+                  <label for="{{role.id}}">{{role.name}}</label>
+                </ng-container>
+            </div>
+        </div>
+      </div>
+  </div>
+  <div >
+    <table class="table_class">
+      <thead>
+        <tr class="tr_class">
+          <th class="th_class">Nom du régle</th>
+          <th class="th_class">Description</th>
+          <th class="th_class">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tr_class" *ngFor="let rule of Rules">
+          <td class="td_class">{{ rule.name }}</td>
+          <td class="td_class">{{ rule.description }}</td>
+          <td class="td_class">
+            <button class="iconStep">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="rgb(48, 61, 231)" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              </svg>
+            </button>
+            <button class="iconStep" (click)="editWorkflow(rule.id)" >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffee00" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+              </svg>
+            </button>
+             <button class="iconStep" (click)="deleteWorkflow(rule.id)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ff0000" class="bi bi-trash" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+              </svg>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="buttonAddRule" (click)="createRule()"><a >Ajouter une régle</a></button> 
+  </div>
+
+
+
+
+<!-- 
+  <div class='container'>
+    <div class="ships">
+      <h2>Available ships</h2>
+      <div 
+        cdkDropList 
+        #cdkShips=cdkDropList 
+        [cdkDropListData]="ships" 
+        class="ship-list"
+        [cdkDropListConnectedTo]="[cdkBoard]" 
+        (cdkDropListDropped)="drop($event)" 
+        cdkDropListSortingDisabled="true">
+  
+        <ng-container *ngFor="let ship of ships">
+          <div cdkDrag >
+            <app-ship [name]="ship.name" [size]="ship.size"></app-ship>
+          </div>
+        </ng-container>
+      </div>
+  
+    </div>
+  </div>
+  <hr />
+
+  <div 
+  cdkDropList 
+  #cdkBoard=cdkDropList [cdkDropListData]="shipsInBoard" [cdkDropListConnectedTo]="[cdkShips]"
+    style="position:relative" (cdkDropListDropped)="drop($event)" cdkDropListSortingDisabled="true">
+    <ng-container *ngFor="let ship of shipsInBoard">
+      <div style="position:absolute" [style.top]="ship.top+'px'" [style.left]="ship.left+'px'" cdkDrag>
+        <app-ship [name]="ship.name" [size]="ship.size"></app-ship>
+        <div *cdkDragPlaceholder></div>
+      </div>
+    </ng-container>
+    <div class="row" *ngFor="let row of board;let i=index">
+      <div class="cell" *ngFor="let box of row;let j=index" id='columns'>
+        <button #bt mat-button class="bt-cell" (mouseover)="position=bt.getBoundingClientRect()"></button>
+      </div>
+    </div>
+  </div> -->

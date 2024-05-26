@@ -1,0 +1,83 @@
+.nav {
+    background-color:rgb(43, 45, 155) ;
+    display: flex;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+  }
+
+.right-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.icon-profile {
+  cursor: pointer;
+  height: 30px;
+  border-radius: 40px;
+  margin-left: 20px;
+}
+
+.navbar-container {
+  width: 100%;
+  padding: 0px 15px;
+  height: 50px; /* Réduit la hauteur de la navbar */
+  margin-left: auto; /* Déplace la navbar vers la droite */
+}
+
+
+.icon-mode {
+  width: 40px;
+  height: 20px;
+}
+
+.nav-position {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bi-bell{
+  width: 20px;
+  color: white;
+}
+
+.dropDownMenu{
+  position: absolute;
+  top: 65px;
+  right: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.195);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+}
+
+.dropDownMenu-item {
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap : 5px;
+  background-color: white;
+
+}
+
+.dropDownMenu-item:hover {
+  color: white;
+  background-color: rgb(43, 45, 155);  
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid rgb(255, 255, 255);
+}

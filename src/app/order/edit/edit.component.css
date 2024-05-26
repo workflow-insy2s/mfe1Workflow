@@ -1,0 +1,193 @@
+
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #CDE8ED;
+}
+
+
+.container{
+  background-color: white;
+    padding-top: 5px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 5px;
+    border-radius: 20px;
+}
+h2 {
+  text-align: center;
+  color: #1877f2;
+}
+
+form {
+padding: 10px 15px ;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;  
+}
+
+input {
+  width: -webkit-fill-available;
+  padding: 8px;
+  padding-right: 29em;
+  margin-bottom: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+#description{
+  padding-bottom: 20em;
+}
+
+button {
+  padding: 9px;
+  background-color: #303de7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font: bold;
+  cursor: pointer;
+}
+
+.cancel_button {
+  background-color: #303de7;
+}
+
+button:hover {
+  background-color:#ddd;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+
+.nav {
+  background: linear-gradient(90deg, #cdffd8, #94b9ff);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo {
+  width: 50px; /* Ajustez la taille de votre image */
+  height: auto; /* Garantit que la hauteur s'ajuste proportionnellement à la largeur */
+  margin-right: 10px; /* Ajoute une marge à droite pour un espacement */
+}
+
+.sidebar {
+  width: 300px;
+  background: radial-gradient(circle at 0% 0%, #72a5e8, #f6f4f8);
+  color: #fff;
+  padding: 20px;
+  height: 100vh;
+  
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #fff;
+  
+}
+.sidebar a:hover {
+  color: #ffcc00; /* Couleur au survol */
+}
+
+.test{
+  display: inline-flex;
+  background-color: #CDE8ED;
+}
+.add{
+  margin:inherit;
+  padding-top: 10px;
+  padding-left: 10px;
+  background-color: #CDE8ED;
+  
+}
+
+.trach{
+  vertical-align: middle;
+    border-style: none;
+    display: flex;
+    width: 30px;
+    margin-left: 59em;
+}
+
+.roles-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.role-checkbox {
+  flex: 0 0 calc(33.33% - 20px); /* Trois colonnes avec un espace de 20px entre chaque élément */
+  margin-right: 20px; /* Espace entre les éléments */
+  margin-bottom: 10px; /* Espacement vertical entre les lignes */
+}
+
+/* Pour s'assurer que chaque élément a une largeur égale */
+.role-checkbox input,
+.role-checkbox label {
+  width: calc(100% - 20px); /* Prend toute la largeur avec un espace de 20px */
+}
+
+
+
+.roles-container {
+  border: 1px solid #ccc; /* Ajoute un cadre autour des rôles */
+  border-radius: 4px; /* Coins arrondis */
+  padding: 10px; /* Espace intérieur */
+}
+
+.role-checkbox {
+  flex: 0 0 calc(33.33% - 20px); /* Trois colonnes avec un espace de 20px entre chaque élément */
+  margin-right: 20px; /* Espace entre les éléments */
+  margin-bottom: 10px; /* Espacement vertical entre les lignes */
+  display: flex; /* Utilise Flexbox pour aligner les cases à cocher et les étiquettes */
+  align-items: center; /* Aligne les éléments verticalement */
+}
+
+.role-checkbox input {
+ margin-bottom: 0px;
+}
+
+.role-checkbox label {
+  font-size: 14px; /* Redimensionne le texte */
+}
+
+
+.title-container {
+  text-align: center;
+  margin-bottom: 20px; /* Adjust the margin as needed */
+}
+
+.page-title {
+  color: black;
+  font-size: 15px;
+  text-align: left;
+
+}
+
+span{
+  font-weight: bold;
+} 
+
+.alert {
+  color: red;
+  font-size: small;
+  padding: 0px;
+}
+
+a {
+  color: #000
+}

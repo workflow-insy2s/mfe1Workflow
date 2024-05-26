@@ -1,0 +1,167 @@
+.user-list {
+  margin: 20px;
+}
+
+.user-list h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-align: center; /* Pour centrer le titre horizontalement */
+}
+
+.user-list table {
+  width: 60%;
+  border-collapse: collapse;
+  margin: 0 auto; /* Pour centrer le tableau horizontalement */
+}
+
+
+.user-list th, .user-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.user-list th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.user-list button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.user-list button:hover {
+  background-color: #45a049;
+}
+.user-list button.delete {
+  background-color: #f44336; /* Rouge */
+}
+
+.user-list button.delete:hover {
+  background-color: #d32f2f; /* Rouge foncé au survol */
+}
+
+.container{
+  background-color: white;
+  padding-bottom: 40px;
+  padding-right: 10px;
+  margin-right: 100em;
+  margin-top: 8px;
+  border-radius: 20px;
+  margin-right: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .in-progress {
+    font-weight: bold;
+    color: #66E199; 
+  }
+  
+  .pending {
+    font-weight: bold;
+    color: #EE760F; 
+  }
+  
+  .completed {
+    font-weight: bold;
+    color: #5271FF; 
+  }
+  
+  button {
+    padding: 10px; 
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    
+
+  }
+  
+  
+  .view-button {
+    background-color: rgb(89, 167, 206); 
+    color: white;
+  }
+  
+  .edit-button {
+    background-color: #79dc7c; 
+    color: white;
+  }
+  
+  .delete-button {
+    background-color: #e92517; 
+    color: white;
+  }
+  
+  .pagination {
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    
+    color: #0D47A1;
+    padding: 8px 16px;
+    border: 1px solid #0D47A1; 
+    cursor: pointer;
+    margin: 0 4px;
+  }
+  
+  .pagination button.active {
+    color: white;
+    background-color: #0D47A1; 
+  }
+  
+  .pagination button:hover {
+    background-color: white; 
+    color: #0D47A1;
+  }
+
+
+  .title-container {
+    text-align: center;
+    margin-bottom: 20px; /* Adjust the margin as needed */
+  }
+  
+  .page-title {
+    color: black;
+    font-size: 15px;
+    text-align: left;
+
+  }
+
+  .nav-link{
+    background-color: #72a5e8;
+    color: white;
+    display: flex;
+    gap: 5px;
+    border-radius: 5px;
+  }
+
+  .container-addButton{
+    display: flex;
+    justify-content: right;
+    width: 100%;
+  }
+
+span{
+  font-weight: bold;
+} 

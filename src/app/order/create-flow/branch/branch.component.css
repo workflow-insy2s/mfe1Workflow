@@ -1,0 +1,54 @@
+.diagram {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+  }
+  
+
+  .disp{
+    display: flex;
+    align-items: center;
+  }
+  
+  .node {
+    background-color: blue;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 10px 15px;
+    text-align: center;
+    font-weight: 500;
+    color: #ffff;
+    width: 120px;
+  }
+  
+  .branch {
+    position: absolute;
+    width: 2px;
+    height: 30px;
+    background-color: #626365;
+  }
+  
+  .branch::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 10px solid #626365;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .branch.left {
+    right: calc(50% + 25px);
+    transform: rotate(30deg);
+  }
+  
+  .branch.right {
+    left: calc(50% + 25px);
+    transform: rotate(333deg);
+  }

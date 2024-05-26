@@ -1,0 +1,53 @@
+
+<div class="flex justify-center items-center h-screen">
+  <div class="container mx-auto">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-500 p-2">
+
+<div class="container">
+  <div class="title-container">
+    <h1 class="page-title">Gérer workflows > <a href="/mfe1/orderComponent/listworkflowComponent">Liste workflows</a> ><span>
+      Modifier workflow
+    </span></h1>
+  </div>
+    <form action="/submit" method="post">
+      <label for="description">nom</label>
+      <input type="text" id="nom" name="nom" [(ngModel)]="workflow.name" required placeholder="Se connecter au 'Nom du workflow'">
+      <label for="description">Description</label>
+      <input type="text" id="text" name="description" [(ngModel)]="workflow.description" required placeholder="Description">
+    
+      
+
+    <div class="form-group" >
+      <label for="roles">Rôles</label>
+
+      <div class="roles-container" >
+          <div class="role-checkbox" *ngFor="let role of roles">
+              <ng-container *ngIf="!role.status ">
+                <input type="checkbox"
+                 id="{{role.id}}"
+                 name="roles"
+                 (change)="handleRoleChange($event, role)"
+                 [checked]="role.name === checkedRole"
+                 >
+                <label for="{{role.id}}">{{role.name}}</label>
+              </ng-container>
+          </div>
+      </div>
+    </div>
+
+</form>
+</div>
+<div style="display: flex, align-;display: flex;justify-content: flex-end;padding: 0px 12px; gap:5px"> 
+  <button ><a (click)="editWorkflow2()"  >Continuer</a></button>
+  <!-- <button class="cancel_button" ><a (click)="resetinput()" >Annuler</a></button> -->
+</div>
+
+
+</div>
+</div>
+</div>
+
+  
+      
+
+ 

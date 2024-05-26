@@ -1,0 +1,53 @@
+
+<div class="grid-box3" >
+
+    <div class="info"  >
+        <label for="description">Informations de la tâche</label><br>
+  
+        <div style="display: flex; ">
+            <div>
+                <input style="margin: 20px;" type="text" id="nom" name="nom" required placeholder="Se connecter au 'Nom du workflow'">
+            </div>
+            <div>
+                <input style="margin: 20px;"  type="text" id="description" name="description" required placeholder="Description">
+            </div>
+        </div>
+        <div style="display: flex;">
+            <div>
+                <input style="margin: 20px; margin-top: 2px;"  type="text" id="responsable" name="responsable" required placeholder="responsable">
+            </div>
+            <div>
+                <input style="margin: 20px; margin-top: 2px;"  type="text" id="url" name="url" required placeholder="URL du résultat">
+            </div>
+        </div>
+        
+    </div>
+    <div >
+      <table>
+        <thead>
+          <tr>
+            <th>Nom du régle</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rule of RuleDto">
+            <td>{{ rule.name }}</td>
+            <td>{{ rule.description }}</td>
+    
+            <td>
+              
+              <button class="edit-button"(click)="editWorkflow(rule.id)" >Modifier</button>
+              <button class="delete-button" (click)="deleteWorkflow(rule.id)">Supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+          
+    </div>
+    <button class="buttonAddRule" (click)="createRule()"><a >Ajouter une régle</a></button>
+    
+  </div>
+  
+

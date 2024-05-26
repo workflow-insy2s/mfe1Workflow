@@ -1,0 +1,42 @@
+
+<div class="flex justify-center items-center h-screen">
+  <div class="container mx-auto">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-500 p-2">
+      <div class="container" >
+        <div class="title-container">
+          <h1 class="page-title">Gérer workflows > <a href="/mfe1/orderComponent/listworkflowComponent">Liste workflows</a> > <span>
+            Ajouter workflow
+          </span></h1>
+        </div>
+        <form action="/submit" method="post">
+
+          <label for="text">Nom<span style="color:red;">*</span> </label>
+          <input class="form-control" type="text"  id="nom" name="nom" [(ngModel)]="workflow.name" minlength="4" required placeholder="Tapez le nom">
+          <label for="description">Description</label>
+          <input type="text" id="text" name="description" [(ngModel)]="workflow.description"  placeholder="Description">
+       
+          <div class="form-group" >
+            <label for="roles">Rôles<span style="color:red;">*</span> </label>
+            <div class="roles-container" >
+              <div class="role-checkbox" *ngFor="let role of roles">
+                <ng-container *ngIf="!role.status">
+                  <input type="checkbox" id="{{role.id}}" name="roles" (change)="handleRoleChange($event, role)">
+                  <label for="{{role.id}}">{{role.name}}</label>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div> 
+      <div class="button-group" style=" display: flex; justify-content: flex-end;"> 
+        <button (click)="ajoutWorkflow()" >Continuer</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+    
+    
+    
+    

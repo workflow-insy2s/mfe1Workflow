@@ -1,0 +1,55 @@
+.sidebar {
+    width: 240px;
+    background: #72a5e8;
+    color: #fff;
+    padding: 20px;
+    height: 100vh;
+    
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar a {
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 5px;
+    
+  }
+  .sidebar a:hover {
+    color: rgb(43, 45, 155); /* Couleur au survol */
+    background-color: white;
+
+  }
+
+  .sidebar a:focus{
+    color: rgb(43, 45, 155);
+  }
+
+  .diag-icon{
+    width: 22px;
+    padding-bottom: 6px;
+    margin-right: 6px;
+  }
+
+  .bi-person-lock{
+    width: 22px;
+    padding-bottom: 6px;
+    margin-right: 6px;
+  }
+
+  .bi-graph-up{
+    width: 19px;
+    padding-bottom: 6px;
+    margin-right: 6px;
+  }
+  
+  
