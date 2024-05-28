@@ -11,6 +11,7 @@ import { AddBranchComponent } from '../add-branch/add-branch.component';
 import { DataService } from '../../data.service';
 import { Rule } from 'src/app/common/models/Rule';
 import { Role } from 'src/app/common/models/role';
+import {RuleService} from 'src/app/order/RuleService';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class StepsComponent  implements OnInit{
   constructor(private srv: ServiceService , private srvStep: ServiceService,
     private router: Router ,private dialog: MatDialog,
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private RuleService: RuleService
   ) {}
   @Input()
   set date(date: Date) {
@@ -69,7 +71,7 @@ export class StepsComponent  implements OnInit{
         event.currentIndex
       );
     }
-         console.log(this.create);
+         console.log("list of Steps",this.create);
 
   }
 
@@ -153,6 +155,11 @@ export class StepsComponent  implements OnInit{
 
      this.getWorkflowDetail();
   });
+
+
+
+  // pour update le Steps avec le id rule
+  this.addRuleToStep()
 }
 
  positions: { [key: string]: { x: number, y: number } } = {};
@@ -191,79 +198,7 @@ numRole :number = 1;
     });
 }
   
-  addStepsToWorkflow(): void {
-    // let newStep: Step = { ...this.stepdto }; 
-    let newStep: Step ; 
 
-    let id: any ; 
-    // let newStep= this.stepdto;
-    // newStep.workflow.id= parseInt(this.workflow.id, 10);
-    //this.AddStep.step_type= this.stepType;
-    console.log(this.stepType);
-    //console.log("nouvelle step simple", newStep);
-    //if (this.stepType == "Step"){
-console.log("step:", this.AddStep);
-      this.srvStep.addStepsToWorkflow(this.AddStep, this.workflow.id)
-      .subscribe(
-        (result) => { 
-          console.log(result);
-          Swal.fire('Valider', '', 'success');  
-          console.log('Data saved');
-          id = result;
-          this.steps.push(id);
-          this.AddStep.role = this.checkedRoles
-          this.getWorkflowDetail();
-          
-          this.showStepInfo = false;
-          console.log(this.create);
-        },
-        (error) => { 
-          console.log('Error:', error);
-          Swal.fire('Erreur', '', 'error');
-        }
-        
-      );
-    //}
-    // else if (this.stepType == "Iterative") {
-    //   console.log("new step in iterative:" ,newStep);
-    //   this.srvStep.addStepIterToWorkflow(newStep as IterativeStep)
-    //   .subscribe(
-    //     (result) => { 
-    //       console.log(result);
-    //       Swal.fire('Valider', '', 'success');  
-    //       console.log('Data saved');
-    //       newStep.id = result;
-    //       this.steps.push(newStep);
-    //       this.getWorkflowDetail();
-    //       this.showStepInfo = false;
-    //     },
-    //     (error) => { 
-    //       console.log('Error:', error);
-    //       Swal.fire('Erreur', '', 'error');
-    //     }
-    //   );
-
-    // } else if (this.stepType == "Conditionelle"){
-      
-    //   this.srvStep.addStepCondiToWorkflow(newStep as ConditionalStep)
-    //   .subscribe(
-    //     (result) => { 
-    //       console.log(result);
-    //       Swal.fire('Valider', '', 'success');  
-    //       console.log('Data saved');
-    //       id = result;
-    //       this.steps.push(result);
-    //       this.getWorkflowDetail();
-    //       this.showStepInfo = false;
-    //     },
-    //     (error) => { 
-    //       console.log('Error:', error);
-    //       Swal.fire('Erreur', '', 'error');
-    //     }
-    //   );
-    // }
-    
-  }
   
   deleteStep() {
     Swal.fire({
@@ -346,13 +281,13 @@ console.log("step:", this.AddStep);
     this.router.navigate(['/mfe-rule'], { queryParams: { idStep: this.idStep }});
   }
 
-  isStepInfoVisible() {
+ /* isStepInfoVisible() {
   return this.showStepInfo;
-  }
+  }*/
 
-  ShowStepInfo():void {
+ /* ShowStepInfo():void {
   this.showStepInfo = true;
-  }
+  }*/
 
   roles: Role[]=[];
   checkedRoles: number[] = [];
@@ -375,23 +310,110 @@ console.log("step:", this.AddStep);
   }
 
   
-AddStep : Step; 
+
+  showStepInfoNoCreated:boolean=false
+// pour ajouter un step
+AddStep : Step = new Step(0,'','','',[],[],[],this.workflow,0);
+ShowStepInfoClickToAddStep(){
+  console.log("methode il est bien")
+  
+  
+  // getAllRoles dans le systeme
+  this.srvStep.getAllRoles().subscribe((res: any) => {
+  this.roles =res;
+  console.log(this.Rules)
+  if(this.roles.length>0){
+  this.showStepInfoNoCreated=true;
+
+  //this.showStepInfo = true;
+  console.log("les roles:",this.roles)
+   }
+              
+             })
+
+ }
+
+ ShowButtonAddRule:boolean=false;
+AddNewStep:Step= new Step(0,'','','',[],[],[],this.workflow,0);;
+ addStepsToWorkflow(): void {
+  this.AddStep.role = this.checkedRoles
+  console.log("les Step qui vous ajouter:",this.AddNewStep)
+  console.log("les id workflow.id :",this.workflow.id)
+  console.log("les id workflowId 2 :",this.workflowId)
+  this.AddNewStep.role.push(1);
+
+  
+    this.srvStep.addStepsToWorkflow(this.AddNewStep, this.workflowId)
+        .subscribe(
+          (result :any) => { 
+            console.log(result);
+            Swal.fire('Valider', '', 'success');  
+            this.AddStep=result;
+
+            this.getWorkflowDetail();
+            this.ShowButtonAddRule = true;
+            
+          },
+          (error) => { 
+            console.log('Error:', error);
+            Swal.fire('Erreur', '', 'error');
+          }
+          
+        );
+}
+  //pour update of Step
+ 
+listIdRole:number[]=[];
+listRole:Role[]=[];
+
+listRule:Rule[]=[]
 
   ShowStepInfoClick(StepId:any): void {
-  this.idStep=StepId;
+    console.log("hello:",StepId)
+    let listIdRule: number[]=[]
+    
+
     //this.stepdto.role = this.checkedRoles;
+    if(!(StepId === null || StepId === undefined)){
         this.srvStep.getStepById(StepId).subscribe(
         (result:Step) => { 
-          console.log("step:",result);
-          this.AddStep.name = result.name;
-          this.AddStep.description = result.description;
           this.AddStep = result;
           console.log("addStep:", this.AddStep);
+          this.listIdRole=[]
+          this.listIdRole =this.AddStep.role
+          console.log("list des rolles id ",this.listIdRole)
+          this.showStepInfo = true;
+          this.listRole=[]
+
+          //getRoles of this step
+          for (let i = 0; i < this.listIdRole.length; i++) {
+            console.log(this.listIdRole[i]);
+            this.srvStep.getRoleByIdOfStep(this.listIdRole[i]).subscribe((res:any) => {
+              
+              this.listRole.push(res)
+        
+            });
+        }
+
+          // getAllRoles dans le systeme
           this.srvStep.getAllRoles().subscribe((res: any) => {
             this.roles =res;
-            this.showStepInfo = true;
+            
            })
            
+           // get All rule of this steps
+           this.listRule = []
+           listIdRule = [...this.AddStep.entryRulesId, ...this.AddStep.exitRulesIds];
+           for (let i = 0; i < listIdRule.length; i++) {
+
+           this.srvStep.getRuleById(listIdRule[i]).subscribe((res: any) => {
+            this.listRule.push(res);
+            
+           })
+          }
+          console.log("this list of rules:",this.listRule)
+
+
         },
         (err) => {
           console.log(err);
@@ -401,6 +423,10 @@ AddStep : Step;
     //   width: '400px',
     //   // Add any other configuration options here
     // });
+  }else{
+    this.ShowStepInfoClickToAddStep()
+
+  }
   }
 
   getSteps(): Step[]{
@@ -460,7 +486,88 @@ AddStep : Step;
     
   }
 
-}
+
+
+
+
+
+  //les methode pour les ajouter regle
+  viewAddRule(){
+            // send ID Rule with localStorge to WorkflowFrontEnd
+            const IdWorkflow = this.workflowId.toString() ;
+            const IdStep = this.AddStep.id.toString() ;
+
+ 
+            // Stockez le token dans localStorage
+            localStorage.setItem('IdWorkflow', IdWorkflow);
+            localStorage.setItem('IdStep', IdStep);
+
+            console.log('id Workflow localStorage Workflow',localStorage);
+    
+    this.router.navigate(['/mfe1/orderComponent/MfeRule']);
+
+
+    
+    //this.router.navigate(['/MfeRule']);
+  }
+
+
+  // methode apres retoure de l'ajoute de regle
+  listNewRule:Rule[]=[]
+  addRuleToStep(){
+    let UpdateStep:Step
+            // get IdWorkflow and navigat vers le workflow
+            const IdRule = this.RuleService.getIdRule(); 
+            console.log('id Rule localStorage Rule',IdRule);
+            const IdStep = this.RuleService.getIdStep(); ;
+            console.log('id IdStep localStorage IdStep',IdStep);
+            // si le nouvelle step
+           if (!(IdRule == 'null' && IdStep == 'null' )){
+              //getStepById
+              this.srvStep.getStepById(IdStep).subscribe(
+                (result:Step) => {
+                  UpdateStep=result
+                  const idR = parseInt(IdRule, 10);
+                  UpdateStep.entryRulesId.push(idR)
+                  //updateStep
+                  this.srvStep.editStepOfWorkflow(IdStep, UpdateStep)
+                  .subscribe(
+                    (result) => { 
+              
+                    Swal.fire('Valider', '', 'success')
+                    localStorage.setItem('IdRule','null' );
+                    localStorage.setItem('IdStep','null' );
+
+
+                   },
+                  (err) => {
+                    console.log(err)
+                  }
+                  )
+
+                  
+
+
+                 });
+              
+
+
+              
+
+              }
+
+            }
+
+
+            fermerBlogNewStep(){
+              this.showStepInfoNoCreated=false
+            }
+            fermerBlogInfoStep(){
+              this.showStepInfo=false
+            }
+  }
+
+
 
 
 

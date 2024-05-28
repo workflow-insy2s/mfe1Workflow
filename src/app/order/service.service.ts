@@ -51,7 +51,7 @@ export class ServiceService {
   //   return this.http.post(this.url+'/steps', steps)
   // }
 
-  addStepsToWorkflow(step: Step, workflowId : WorkflowDto){
+  addStepsToWorkflow(step: Step, workflowId : any){
     return this.http.post(this.url+'/steps/addStepInWorkflow/'+workflowId, step)
   }
 
@@ -166,6 +166,12 @@ addRole (role:Role){
   return this.http.get(this.url2+'/roles/')
 
  }
+ getRoleByIdOfStep(id:any){
+  return this.http.get(this.url2+'/roles/'+id)
+
+ }
+
+
 
  deleteRole (roleId: any ){
   return this.http.delete(this.url2+'/roles/'+roleId)

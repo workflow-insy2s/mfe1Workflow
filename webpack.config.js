@@ -10,12 +10,12 @@ module.exports = withModuleFederationPlugin({
    './OrderModule': './src/app/order/order.module.ts'
   },
 
-  remotes: {
-  "mfe-rule":"mfe-rule@http://localhost:4002/remoteEntry.js" ,
+  /*remotes: {
+  //"mfe-rule":"mfe-rule@http://localhost:4002/remoteEntry.js" ,
   "mfe-user":"mfe-user@http://localhost:4004/remoteEntry.js" ,
 
    
-   },
+   },*/
 
 
   shared: {

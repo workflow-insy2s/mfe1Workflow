@@ -64,6 +64,7 @@ export class AddworkflowComponent implements OnInit{
   
   ajoutWorkflow() {
       console.log("this.workflow", this.workflow);
+      this.workflow.role_id
       this.srv.addWorkflow(this.workflow)
       .subscribe(
         (result) => { 

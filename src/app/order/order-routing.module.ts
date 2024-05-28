@@ -10,6 +10,7 @@ import { StepInfoComponent } from './create-flow/step-info/step-info.component';
 import { StepsComponent } from './create-flow/steps/steps.component';
 import { ListworkflowComponent } from './listworkflow/listworkflow.component';
 import { EditComponent } from './edit/edit.component';
+import { loadRemoteModule } from '@angular-architects/module-federation';
 // import { ExecutorComponent } from './executor/executor.component';
 // import { WorkflowListComponent } from './executor/workflow-list/workflow-list.component';
 // import { WorkflowExecuteComponent } from './executor/workflow-execute/workflow-execute.component';
@@ -66,9 +67,12 @@ const orderRoutes: Routes = [
               },
               {
                 path: 'stepsComponent',
-                component: StepsComponent
+                component: StepsComponent,
             
-              }
+              },
+
+
+
             ]
             
           },
@@ -82,6 +86,16 @@ const orderRoutes: Routes = [
             component: ListworkflowComponent
         
           },
+          {
+            path:'MfeRule',
+            loadChildren:()=>{
+                return loadRemoteModule({
+                    type:'module',
+                    remoteEntry:"http://localhost:4002/remoteEntry.js",
+                    exposedModule:"./RuleModule"
+                }).then(m=>m.RuleModule).catch(e=>console.log(e));
+            }
+        }
          
         ]
     

@@ -254,6 +254,31 @@
       font-size: bold;
       cursor: pointer;
     }
+
+    .buttonAddStep{
+      padding: 10px;
+        background: #52c652;
+        color: #fff;
+        border: none;
+        margin-top: 20px;
+        border-radius: 20px;
+        padding-left: 25px;
+        padding-right: 15px;
+        font-size: bold;
+        cursor: pointer;
+      }
+      .buttonfermer{
+        padding: 10px;
+          background: #f03417;
+          color: #fff;
+          border: none;
+          margin-top: 20px;
+          border-radius: 20px;
+          padding-left: 25px;
+          padding-right: 15px;
+          font-size: bold;
+          cursor: pointer;
+        }
     
     
     
