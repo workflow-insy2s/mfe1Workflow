@@ -12,6 +12,10 @@ export class RuleService {
     // Récupérer le jeton à partir du localStorage
     return localStorage.getItem('IdStep');
   }
+  getRankStep(): any | null {
+    // Récupérer le jeton à partir du localStorage
+    return localStorage.getItem('RankStep');
+  }
 
 
   

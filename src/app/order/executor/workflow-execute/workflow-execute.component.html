@@ -1,0 +1,112 @@
+<h1 class="h1">{{SExecute.workflow.name}}</h1>
+<div class="blog-list">
+  <!------pour les steps deja executer-->
+  <div *ngFor="let step of steps"  class="blog-item-container">
+    
+    <h6>{{step.name}}</h6>
+    <span class="arrow"></span>
+  </div>
+  <!------------------------------------>
+<!--affichage des Steps a executer-->
+
+
+<div  class="blog-item-containerex">
+    
+  <h6>{{SExecute.step.name}}</h6>
+  
+</div>
+
+</div> 
+<!---*------------------------------------------------------------------------------------------------------*-->
+<!--pour executer le Step-->
+
+<div class="conteneur">
+  <div class="cadre gauche">
+    <h4 class="h4">{{SExecute.step.name}}</h4>
+
+    <div class="container">
+      <div class="pLeft">
+        <h6>Statut :</h6> {{SExecute.state}}
+      </div>
+      <div class="pCenter">
+       <h6>Date Début:</h6>  {{SExecute.start_date}}
+      </div>
+      <div class="pRight">
+        <h6>Date Fin:</h6> {{SExecute.end_date}}
+      </div>
+    </div>
+    <!-----------------affichier le regles de Step----------------->
+    <h5>Liste des règles</h5>
+
+    <table>
+      <thead>
+        <tr>
+          
+          <th>Nom de regle</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rule of listRule">
+          <td>{{rule.name}}</td>
+          <td>{{rule.description}}</td>
+          
+
+          <td>
+            
+            
+            <button class="roler" (click)="ex(rule.id)">Traitement de règle</button>
+  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!------------------------------------------------------------->
+
+  
+  </div>
+  <!-----------------------pour remplir le objet de type saisir----------------------------->
+  <div class="cadre droit" *ngIf="showViewTraitement">
+    <!---hjrhrjfhrbfhrfrbfjkhebfjk<br>bfjekfuzgkjbfjkbkjbrfkz-->
+        <!-------------------------->
+        
+            <div class="form-container" *ngIf="showEx">
+              <div class="add-user-form">
+                <h2>{{objetSaisir.name}} :</h2>
+                <form>
+                    <div class="form-group">
+                        <input type="text" id="content" name="content" [(ngModel)]="objetSaisir.content"  required>
+                    </div>
+                    
+            
+                    <div class="button-group">
+                        <button type="button" class="add-button" (click)="sauvegarder()" >Sauvegarder</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+        
+        <!-------------------------->
+
+
+              <!-----------pour le button de executer le regle--------------->
+              <div *ngIf="showButtonEx">
+                <button class="btEx" (click)="executerRegles()">Exécuter le règle</button>
+              </div>
+
+              <!------------------------------------------------------------->
+  </div>
+  <!---------------------------------------------------------------------------------------->
+</div>
+
+
+
+<body>
+  <div class="button-container">
+
+    <button type="button" class="button green-button" (click)="Progresser()" >Progresser</button>
+    <!--<button type="button" class="button green-button" (click)="nextStep()" [disabled]="!progress">Progresser</button>-->
+  </div>
+  </body>

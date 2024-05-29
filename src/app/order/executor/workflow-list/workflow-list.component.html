@@ -1,0 +1,43 @@
+<div class="user-list">
+    <h2>Liste des workflow</h2>
+    <table>
+      <thead>
+        <tr>
+          
+          <th>Nom de workflow</th>
+          <th>Description</th>
+  
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let wkf of Workflow">
+          <td>{{wkf.name}}</td>
+          <td>{{wkf.description}}</td>
+          
+  
+  
+  
+      
+  
+          <td>
+            
+            <button class="roler" (click)="openRoleUserDialog()" >Plus détaillée</button>
+            <button (click)="executer(wkf.id)">Éxécuter</button>
+  
+           <!-- <button [routerLink]="['/homeComponent/executeComponent']">Éxécuter</button>-->
+  
+  
+  
+  
+  
+  
+  
+  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  

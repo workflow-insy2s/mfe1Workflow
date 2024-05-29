@@ -25,6 +25,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WorkflowInterceptor } from './workflow.interceptor';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ExecutorComponent } from './executor/executor.component';
+import { WorkflowListComponent } from './executor/workflow-list/workflow-list.component';
+import { WorkflowExecuteComponent } from './executor/workflow-execute/workflow-execute.component';
+import { DescriptionComponent } from './executor/description/description.component';
 // import { AddBranchComponent } from './create-flow/add-branch/add-branch.component';
 // import { DescriptionComponent } from './executor/description/description.component';
 // import { ExecutorComponent } from './executor/executor.component';
@@ -47,6 +51,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ListworkflowComponent,
     EditComponent,
     BranchComponent,
+    ExecutorComponent,
+    WorkflowListComponent,
+    WorkflowExecuteComponent,
+    DescriptionComponent,
     // AddBranchComponent,
     // ExecutorComponent,
     // WorkflowListComponent,

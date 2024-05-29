@@ -1,0 +1,61 @@
+.user-list {
+    margin: 20px;
+  }
+  
+  .user-list h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .user-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .user-list th, .user-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .user-list th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .user-list button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .user-list button:hover {
+    background-color: #45a049;
+  }
+  .user-list button.delete {
+    background-color: #f44336; /* Rouge */
+  }
+  
+  .user-list button.delete:hover {
+    background-color: #d32f2f; /* Rouge foncé au survol */
+  }
+
+  .user-list button.roler {
+    background-color: #2d7af6; /* Rouge */
+  }
+  
+  .user-list button.roler:hover {
+    background-color: #2d7af6; /* Rouge foncé au survol */
+  }
+
+  .user-list button.role {
+    background-color: #f6a62d; /* Rouge */
+  }
+  
+  .user-list button.role:hover {
+    background-color: #f6a62d; /* Rouge foncé au survol */
+  }
+  

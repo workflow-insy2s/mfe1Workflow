@@ -19,7 +19,7 @@ export class EditComponent implements OnInit{
     id:"",
     name: "",
     description: "",
-    role_id: [],
+    role: [],
     creationDate: "",
     steps: [],
     // workflowId: 1,
@@ -50,7 +50,7 @@ export class EditComponent implements OnInit{
   handleRoleChange(event: any, role: Role) {
     role.checked = event.target.checked;
     if (event.target.checked) {
-      this.workflow.role_id= role.name;
+      this.workflow.role.push(role.id);
     }
   }
 

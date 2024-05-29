@@ -1,0 +1,70 @@
+.navbar {
+    background-color: #b7b5b5a8;
+    color: #0b0b0b;
+    padding: 10px 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-list li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  .nav-list li:last-child {
+    margin-right: 0;
+  }
+  
+  .nav-list li a {
+    color: #080808;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 18px; /* Taille de la police */
+    font-weight: bold; /* Gras */
+  }
+  
+  .nav-list li a:hover {
+    color: #0044ff;
+  }
+  
+  .logo-container img {
+    width: 70px;
+    height: 60px;
+  }
+  
+
+
+
+  .nav-list {
+    list-style: none; /* Supprime les puces de liste */
+    padding: 0; /* Supprime la marge intérieure par défaut */
+  }
+  
+  .nav-list li {
+    display: inline-block; /* Affiche les éléments de liste sur une ligne */
+    margin-right: 10px; /* Ajoute un espace entre les éléments de liste */
+  }
+  
+  .nav-list li:last-child {
+    margin-right: 0; /* Ne pas ajouter de marge à droite pour le dernier élément de liste */
+  }
+  
+  .nav-list li a {
+    text-decoration: none; /* Supprime la décoration de texte des liens */
+    color: #080808; /* Couleur du texte des liens */
+    padding: 5px 5px; /* Ajoute un espacement interne aux liens */
+    border: 0 px solid #ccc; /* Ajoute une bordure aux liens */
+    border-radius: 5px; /* Arrondit les coins des liens */
+  }
+  
+  .nav-list li a:hover {
+    background-color: #f7f7f7; /* Change la couleur de fond des liens au survol */
+  }
+  

@@ -116,7 +116,7 @@ export class StepsComponent  implements OnInit{
     id:'',
     name: "",
     description: "",
-    role_id: '',
+    role:[],
     creationDate: '',
     steps: [],
     //workflowId: number;
@@ -334,19 +334,21 @@ ShowStepInfoClickToAddStep(){
  }
 
  ShowButtonAddRule:boolean=false;
-AddNewStep:Step= new Step(0,'','','',[],[],[],this.workflow,0);;
+AddNewStep:Step= new Step(0,'','','',[],[],[],this.workflow,0);
+rankStep:number=0;
  addStepsToWorkflow(): void {
   this.AddStep.role = this.checkedRoles
   console.log("les Step qui vous ajouter:",this.AddNewStep)
   console.log("les id workflow.id :",this.workflow.id)
   console.log("les id workflowId 2 :",this.workflowId)
   this.AddNewStep.role.push(1);
-
-  
+  this.rankStep = this.create.length;
+  this.AddNewStep.rank=this.create.length;
     this.srvStep.addStepsToWorkflow(this.AddNewStep, this.workflowId)
         .subscribe(
           (result :any) => { 
             console.log(result);
+            
             Swal.fire('Valider', '', 'success');  
             this.AddStep=result;
 
@@ -521,6 +523,9 @@ listRule:Rule[]=[]
             console.log('id Rule localStorage Rule',IdRule);
             const IdStep = this.RuleService.getIdStep(); ;
             console.log('id IdStep localStorage IdStep',IdStep);
+            const RankStep = this.RuleService.getRankStep(); ;
+            console.log('id RankStep localStorage RankStep',RankStep);
+            this.rankStep=RankStep;
             // si le nouvelle step
            if (!(IdRule == 'null' && IdStep == 'null' )){
               //getStepById

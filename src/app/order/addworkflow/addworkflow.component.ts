@@ -26,7 +26,7 @@ export class AddworkflowComponent implements OnInit{
     id: '',
     name: '',
     description: '',
-    role_id: '',
+    role:[],
     creationDate: new Date(),
     steps: [],
   };  empty= false;
@@ -47,9 +47,9 @@ export class AddworkflowComponent implements OnInit{
   handleRoleChange(event: any, role: Role) {
     role.checked = event.target.checked;
     if (event.target.checked) {
-      this.workflow.role_id= role.name;
+      this.workflow.role.push(role.id) ;
     }
-    console.log(this.workflow.role_id); 
+    console.log(this.workflow.role); 
   }
 
   updateEmptyRoleFlag() {
@@ -59,12 +59,12 @@ export class AddworkflowComponent implements OnInit{
   resetinput () {
     this.workflow.name="";
     this.workflow.description="";  
-    this.workflow.role_id="";
+    this.workflow.role=[];
   }
   
   ajoutWorkflow() {
       console.log("this.workflow", this.workflow);
-      this.workflow.role_id
+      this.workflow.role.push(1);
       this.srv.addWorkflow(this.workflow)
       .subscribe(
         (result) => { 

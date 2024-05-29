@@ -1,0 +1,298 @@
+.h1{
+  
+    text-align: center; /* Alignement centré */
+    
+  
+  }
+  
+  /* Style pour le composant BlogList */
+  .blog-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid #cccccc;
+    padding: 10px;
+    border-radius: 25px; /* Ajoute des coins arrondis de 15px */
+    margin-top: 40px;
+   
+    margin-left: auto; /* Centrer horizontalement */
+    margin-right: auto; /* Centrer horizontalement */
+  
+  }
+  /* Style pour le composant BlogItem */
+  .blog-item-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #3b4abc;
+    border-radius: 15px; /* Ajoute des coins arrondis de 15px */
+    background-color: #3b4abc;
+    color: white; /* Couleur du texte en blanc */
+  
+  }
+  /*pour le step a executer*/
+  
+  
+  .blog-item-containerex {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: 5px solid #79ec06;
+    border-radius: 15px; /* Ajoute des coins arrondis de 15px */
+    background-color: #3b4abc;
+    color: rgb(255, 255, 255); /* Couleur du texte en blanc */
+  
+  }
+  /* Flèches */
+  .arrow {
+    position: absolute;
+    top: 5%;
+    width: 27px; /* Ajustez la taille de la flèche */
+    height: 90px; /* Ajustez la taille de la flèche */
+    background-color: #ecb206; /* Couleur de la flèche */
+  }
+  
+  .arrow:first-child {
+    left: -25px; /* Positionnement de la flèche à gauche */
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+  }
+  
+  .arrow:last-child {
+    right: -25px; /* Positionnement de la flèche à droite */
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+  }
+  
+  /*pour le cadre de page d'execution*/
+  
+  h4 {
+    text-align: center; /* Centre le texte horizontalement */
+  }
+  h5 {
+    text-align: center; /* Centre le texte horizontalement */
+    color: #ecb206;
+    margin-top: 20px;
+  }
+  
+  
+  .conteneur {
+    display: flex;
+    border: 1px solid #ccc;
+  margin-top: 20px;
+  }
+  
+  .cadre {
+    flex: 1;
+    border: 2px solid #ccc;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 15px; /* Ajoute des coins arrondis de 15px */
+  
+  }
+  
+  .gauche {
+    margin-right: 10px; /* Marge entre les cadres */
+  }
+  
+  .droit {
+    margin-left: 10px; /* Marge entre les cadres */
+    
+  }
+  
+  
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .pLeft {
+    text-align: left;
+    margin-right: 5px; /* Augmente l'espace entre le div de gauche et le div central */
+  }
+  
+  .pCenter {
+    text-align: center;
+  }
+  
+  .pRight {
+    text-align: right;
+    margin-left: 5px; /* Augmente l'espace entre le div de droite et le div central */
+  }
+  
+  
+  /*pour le tableau des regles*/
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  button {
+  
+    padding: 6px 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button.roler {
+    background-color: #2196F3;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  button.roler:hover {
+    background-color: #0b7dda;
+  }
+  
+  
+  
+  /*pour le button de fin de page */
+  
+  .button-container {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px; /* Pour séparer les boutons */
+    background-color: #3b4abc; /* Couleur de fond du bouton Ajouter */
+    color: white; /* Couleur du texte */
+    margin-right: 3px;
+  }
+  
+  .blue-button {
+    background-color: #3b4abc;
+  }
+  
+  .green-button {
+    background-color: #ecb206;
+  }
+  
+  /*pour le div de remplir les objets de type Saisir*/
+  .form-container {
+    margin-top: 50px;
+    margin-bottom: 50px ;
+    border-radius: 8px; /* Coins arrondis de 8 pixels */
+    margin: 50 auto; /* Centrer horizontalement */
+  }
+  
+  .add-user-form h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .add-user-form form {
+    width: 100%; /* Utilisation de la largeur totale du conteneur parent */
+  }
+  
+  .add-user-form .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .add-user-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .add-user-form input,
+  .add-user-form select {
+    width: calc(100% - 20px); /* Utilisation de la largeur totale du conteneur parent avec une petite marge */
+    padding: 8px;
+    border: 1px solid #bab8b8;
+    border-radius: 4px;
+  }
+  
+  .add-user-form .button-group {
+    margin-top: 20px; /* Ajout de l'espace entre les boutons et les champs de formulaire */
+  }
+  
+  .add-user-form .button-group button {
+    width: 49%; /* Définition de la largeur des boutons */
+    padding: 10px; /* Ajout du rembourrage */
+    border: none; /* Suppression de la bordure */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointeur */
+  }
+  
+  .add-user-form .button-group button.add-button {
+    background-color: #3b4abc; /* Couleur de fond du bouton Ajouter */
+    color: white; /* Couleur du texte */
+    margin-right: 3px;
+  }
+  .add-user-form .button-group button.souv-button {
+    background-color: #3bbc60; /* Couleur de fond du bouton Ajouter */
+    color: white; /* Couleur du texte */
+    margin-right: 3px;
+  }
+  
+  
+  .add-user-form .button-group button.cancel-button {
+    background-color: #ecb206; /* Couleur de fond du bouton Annuler */
+    color: white; /* Couleur du texte */
+  }
+  
+  .add-user-form .button-group button:hover {
+    opacity: 0.8; /* Réduction de l'opacité au survol */
+  }
+  
+  
+  /*pour le button execute le regle*/
+  button {
+    background-color: #4CAF50; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    padding: 10px 20px; /* Rembourrage intérieur */
+    font-size: 16px; /* Taille de police */
+    border: none; /* Supprimer la bordure */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur de la souris */
+  }
+  
+  /* Changement de style au survol */
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .btEx {
+    margin-top: 150px;
+    margin-left: 300px;
+    width: 400px; /* Largeur souhaitée */
+    height: 100px; /* Hauteur souhaitée */
+    font-size: 30px; /* Taille de police souhaitée */
+  
+  }

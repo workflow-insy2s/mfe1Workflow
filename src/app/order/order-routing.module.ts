@@ -11,6 +11,10 @@ import { StepsComponent } from './create-flow/steps/steps.component';
 import { ListworkflowComponent } from './listworkflow/listworkflow.component';
 import { EditComponent } from './edit/edit.component';
 import { loadRemoteModule } from '@angular-architects/module-federation';
+import { ExecutorComponent } from './executor/executor.component';
+import { WorkflowListComponent } from './executor/workflow-list/workflow-list.component';
+import { WorkflowExecuteComponent } from './executor/workflow-execute/workflow-execute.component';
+import { DescriptionComponent } from './executor/description/description.component';
 // import { ExecutorComponent } from './executor/executor.component';
 // import { WorkflowListComponent } from './executor/workflow-list/workflow-list.component';
 // import { WorkflowExecuteComponent } from './executor/workflow-execute/workflow-execute.component';
@@ -85,6 +89,28 @@ const orderRoutes: Routes = [
             path: 'listworkflowComponent',
             component: ListworkflowComponent
         
+          },
+          {
+            path: 'listworkflowComponent',
+            component: ListworkflowComponent
+        
+          },
+          {
+            path: 'executor',
+            component: ExecutorComponent,
+            children:[{
+              path:'workflowList',
+              component: WorkflowListComponent
+            },
+            {
+              path: 'workflowExecute/:workflowId',
+              component: WorkflowExecuteComponent
+            },
+            {path : 'description',
+              component :DescriptionComponent
+            }
+        
+            ]
           },
           {
             path:'MfeRule',

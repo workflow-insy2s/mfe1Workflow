@@ -5,20 +5,20 @@ export class WorkflowDto {
       id:any;
       name: string;
       description: string;
-      role_id: any;
+      role: number[];
       creationDate: any;
       steps: Step[];
     
       constructor(
         name: string,
         description: string,
-        role_id: any,
+        role: number[],
         creationDate: any,
         steps: Step[]
       ) {
         this.name = name;
         this.description = description;
-        this.role_id = role_id;
+        this.role = role;
         this.creationDate = creationDate;
         this.steps = steps;
       }
